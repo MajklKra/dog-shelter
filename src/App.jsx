@@ -1,17 +1,28 @@
-import { useState } from "react";
-import rawData from "./dogsData.json";
-import PageContainer from "./components/PageContainer/PageContainer";
+import { useState } from "react"
+import rawData from "./dogsData.json"
+import PageContainer from "./components/PageContainer/PageContainer"
+import DogList from "./components/DogList/DogList"
+import DogForm from "./components/DogForm/DogForm"
 
 function App() {
-  const [listOfDogs, setListOfDogs] = useState(rawData.dogs);
+  const [listOfDogs, setListOfDogs] = useState(rawData.dogs)
+
+  const [newDog, setNewDog] = useState({
+    id:
+      listOfDogs.length > 0
+        ? Math.max(...listOfDogs.map((dog) => dog.id)) + 1
+        : 1,
+    name: "",
+    breed: "",
+    age: "",
+  })
 
   return (
     <PageContainer>
-      <p>Odstavec1</p>
-      <p>Odstavec2</p>
-      <p>Odstavec3</p>
+      <DogList data={listOfDogs} />
+      <DogForm></DogForm>
     </PageContainer>
-  );
+  )
 }
 
-export default App;
+export default App
