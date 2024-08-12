@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import rawData from "./dogsData.json"
 import PageContainer from "./components/PageContainer/PageContainer"
 import DogList from "./components/DogList/DogList"
@@ -22,7 +22,7 @@ function App() {
   const validateData = (dog) => {
     if (dog.age === "" || parseInt(dog.age) < 0 || parseInt(dog.age) > 25) {
       setValid(false)
-    } else if (dog.name.trim().length === 0 || dog.breed.trim().length === 0) {
+    } else if (dog.name.length === 0 || dog.bread.length === 0) {
       setValid(false)
     } else {
       setValid(true)
@@ -31,59 +31,41 @@ function App() {
 
   const handleChange = (e) => {
     const source = e.target.name
-    let updatedDog
+    let updateDog
     const val = e.target.value
 
     switch (source) {
       case "name": {
-        updatedDog = { ...newDog, name: val }
+        updateDog = { ...newDog, name: val }
         break
       }
 
       case "breed": {
-        updatedDog = { ...newDog, breed: val }
+        updateDog = { ...newDog, breed: val }
         break
       }
 
       case "age": {
-        updatedDog = { ...newDog, age: val }
+        updateDog = { ...newDog, age: val }
         break
       }
 
       default:
         break
     }
+
     setNewDog(updatedDog)
-    validateData(updatedDog)
+    validatedata(updateDog)
   }
 
-  const handleAdd = () => {
-    setListOfDogs((listOfDogs) => {
-      return [...listOfDogs, newDog]
-    })
-    const updatedDog = {
-      id: newDog.id + 1,
-      name: "",
-      breed: "",
-      age: "",
-    }
-    setNewDog(updatedDog)
-    validateData(updatedDog)
-  }
-
-  // useEffect(() => {
-  // console.log(newDog)
-  // }, [newDog])
+  useEffect(() => {
+    console.log(newDog)
+  }, [newDog])
 
   return (
     <PageContainer>
       <DogList data={listOfDogs} />
-      <DogForm
-        valid={valid}
-        onChange={handleChange}
-        onAdd={handleAdd}
-        data={newDog}
-      />
+      <DogForm valid={valid} onChange={handleChange} />
     </PageContainer>
   )
 }
