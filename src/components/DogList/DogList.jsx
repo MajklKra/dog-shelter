@@ -1,6 +1,6 @@
-import "./DogList.css";
+import "./DogList.css"
 
-function DogList({ data }) {
+function DogList({ data, onDelete }) {
   return (
     <div className="list">
       {data.map((item) => {
@@ -9,6 +9,9 @@ function DogList({ data }) {
             <span>
               {item.name} / {item.breed} / {item.age}
             </span>
+            <button className="btn-delete" onClick={() => onDelete(item.id)}>
+              X
+            </button>
           </div>
         )
       })}
@@ -16,4 +19,4 @@ function DogList({ data }) {
   )
 }
 
-export default DogList;
+export default DogList

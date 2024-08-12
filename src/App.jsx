@@ -3,6 +3,7 @@ import rawData from "./dogsData.json"
 import PageContainer from "./components/PageContainer/PageContainer"
 import DogList from "./components/DogList/DogList"
 import DogForm from "./components/DogForm/DogForm"
+import Toggler from "./components/Toggler/Toggler"
 
 function App() {
   const [listOfDogs, setListOfDogs] = useState(rawData.dogs)
@@ -18,6 +19,7 @@ function App() {
   })
 
   const [valid, setValid] = useState(false)
+  const [activeTab, setActiveTab] = useState(1)
 
   const validateData = (dog) => {
     if (dog.age === "" || parseInt(dog.age) < 0 || parseInt(dog.age) > 25) {
@@ -71,19 +73,45 @@ function App() {
     validateData(updatedDog)
   }
 
+  const handleDelete = (idToDel) => {
+    const temp = listOfDogs.filter((dog) => dog.id !== idToDel)
+    setListOfDogs(temp)
+  }
+
+  const handleChoose = (name) => {
+    switch (name) {
+      case "list-of-dogs": {
+        setActiveTab(1)
+        break
+      }
+      case "shelter-storage": {
+        setActiveTab(2)
+        break
+      }
+      default:
+        break
+    }
+  }
+
   // useEffect(() => {
   // console.log(newDog)
   // }, [newDog])
 
   return (
     <PageContainer>
-      <DogList data={listOfDogs} />
-      <DogForm
-        valid={valid}
-        onChange={handleChange}
-        onAdd={handleAdd}
-        data={newDog}
-      />
+      <Toggler onChoose={handleChoose} />
+      {activeTab === 1 && (
+        <>
+          <DogList data={listOfDogs} onDelete={handleDelete} />
+          <DogForm
+            valid={valid}
+            onChange={handleChange}
+            onAdd={handleAdd}
+            data={newDog}
+          />
+        </>
+      )}
+      {activeTab === 2 && <></>}
     </PageContainer>
   )
 }
