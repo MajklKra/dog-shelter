@@ -2,6 +2,8 @@ import "./DogForm.css"
 
 function DogForm({ data, valid, onChange, onAdd }) {
   return (
+    <fieldset>
+      <legend>Vložení pejska</legend>
     <div className="dog-form">
       <input
         type="text"
@@ -30,6 +32,7 @@ function DogForm({ data, valid, onChange, onAdd }) {
         Přidat
       </button>
     </div>
+    </fieldset>
   )
 }
 

@@ -13,15 +13,11 @@ function App() {
       listOfDogs.length > 0
         ? Math.max(...listOfDogs.map((dog) => dog.id)) + 1
         : 1,
-    // Math.max(15, 18, 55, -5)
-    // Math.max(listOfDogs.map((dog) => dog.id))
-    // => Math.max([1,2,3,4,5,6])
-    // Math.max(...listOfDogs.map((dog) => dog.id))
-    // => Math.max(1,2,3,4,5,6)
     name: "",
     breed: "",
     age: "",
   })
+
   const [valid, setValid] = useState(false)
   const [activeTab, setActiveTab] = useState(1)
   const [shelterStorage, setShelterStorage] = useState({
@@ -35,7 +31,8 @@ function App() {
     pills: 2,
   }
 
-  const validateData = (dog) => {
+  const validateData = (dog) => 
+  {
     if (dog.age === "" || parseInt(dog.age) < 0 || parseInt(dog.age) > 25) {
       setValid(false)
     } else if (dog.name.trim().length === 0 || dog.breed.trim().length === 0) {
@@ -115,9 +112,6 @@ function App() {
         break
     }
   }
-  // useEffect(() => {
-  //   console.log(newDog)
-  // }, [newDog])
 
   const handleAddToStorage = (temp) => {
     const temporaryStorage = {

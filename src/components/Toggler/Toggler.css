@@ -1,24 +1,48 @@
+.page-container {
+  display: flex;
+  flex-direction: column; /* Aby se prvky uvnitř skládaly vertikálně */
+  width: 100%; /* Aby kontejner zabíral plnou šířku rodiče */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #F5F5F5
+}
+
 .page-toggler {
   display: flex;
-  width: 500px;
-  margin: 50px 0;
-  padding-top: 0;
-  justify-content: space-between;
+  flex-grow: 1; /* Aby se kontejner .page-toggler roztahoval na dostupný prostor */
+  /* justify-content: space-between; */
+  justify-content: center;
+  align-items: center; /* Vertikální centrování */
+  width: 100%; /* Aby se kontejner .page-toggler přizpůsobil šířce rodiče */
   margin: 30px 0;
-  height: 40px;
+  /* height: 40px; */
+  /* background-color: #7CB9E8;
+  opacity: 0.9; */
+  box-sizing: border-box; /* Zajistí, že padding neovlivní šířku */
+  padding: 10px;
+  min-height: 100px; /* Minimální výška */
+  max-height: 200px; /* Maximální výška */
+  width: 500px;
+
+  width: 100%; /* Přizpůsobí se šířce rodičovského .page-container */
+  max-width: 500px; /* Můžeš přidat max-width, pokud chceš omezit šířku */
 }
 
 .toggler-btn {
-  height: 100%;
-  width: 48%;
-  border: 1px solid white;
-  color: white;
+  /* flex-grow: 1; */ /* Aby tlačítko zabíralo dostupný prostor */
+  margin: 0 10px; /* Vytvoří prostor mezi tlačítky */
+  height: 3rem;
+  width: 10rem;
   font-size: 20px;
+  background-color: #5072A7;
+  border-radius: 5px;
   cursor: pointer;
-  background-color: transparent;
+  /* border: 1px solid gray; */
+  border:none;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 .active {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #7CB9E8;
 }
-

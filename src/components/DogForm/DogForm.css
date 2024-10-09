@@ -1,7 +1,132 @@
-.dog-form {
+/* .dog-form {
   display: flex;
-  width: 500px;
+
   margin: 50px 0;
   justify-content: space-between;
   align-items: center;
+  
+  width: 100%; 
+  max-width: 500px; 
+} */
+
+.dog-form {
+  display: flex;
+  /* flex-direction: row; */
+  width: 100%; /* Přizpůsobí se rodičovskému .page-container */
+  max-width: 100%; /* Zajistí, že formulář nepřesáhne šířku rodiče */
+  margin: 50px 0;
+  justify-content: center;
+  align-items: center; /* Centrovat obsah vertikálně */
+  box-sizing: border-box; /* Padding neovlivní šířku */
+}
+
+fieldset {
+  padding: 1rem;
+  border-radius: 15px;
+  border: 1px solid #004170;
+}
+
+legend{
+  font-weight: bold;
+  color: #004170;
+}
+
+.dog-form > input {
+  border-radius: 5px;
+  border: none;
+}
+
+@media screen and (max-width: 300px) 
+{
+  body{
+    display: none;
+  }
+
+
+}
+
+@media screen and (min-width: 301px)and (max-width: 400px) 
+{
+  .dog-form{
+    flex-direction: column;
+  }
+
+  .dog-form > input {
+    margin-bottom: 0.5rem;
+    align-self: flex-start; /* Umístění inputů nalevo */
+  }
+
+  .dog-form > button {
+    margin-bottom: 1rem;
+    align-self: flex-start; /* Umístění inputů nalevo */
+  }
+
+  
+}
+
+
+@media screen and (min-width: 401px) and (max-width: 575px) 
+{
+  .dog-form{
+    flex-direction: column;
+  }
+
+  .dog-form > input {
+    margin-bottom: 0.5rem;
+    align-self: flex-start; /* Umístění inputů nalevo */
+  }
+
+  .dog-form > button {
+    margin-bottom: 1rem;
+    align-self: flex-start; /* Umístění inputů nalevo */
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) 
+{
+  .dog-form{
+    flex-direction: row;
+  } 
+
+  .dog-form > input {
+    margin-right: 0.5rem;
+    align-self: flex-start; /* Umístění inputů nalevo */
+  }
+}
+
+@media screen and (min-width: 767px) and (max-width: 991px) 
+{
+  .dog-form{
+    flex-direction: row;
+  } 
+
+  .dog-form > input {
+    margin-right: 0.5rem;
+    align-self: flex-start; /* Umístění inputů nalevo */
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) 
+{
+  .dog-form{
+    flex-direction: row;
+  } 
+
+  .dog-form > input {
+    margin-right: 0.5rem;
+    align-self: flex-start; /* Umístění inputů nalevo */
+  }
+
+}
+
+@media screen and (min-width: 1200px)
+{
+  .dog-form{
+    flex-direction: row;
+  } 
+
+  .dog-form > input {
+    margin-right: 0.5rem;
+    align-self: flex-start; /* Umístění inputů nalevo */
+  }
 }
